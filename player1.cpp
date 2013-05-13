@@ -31,7 +31,7 @@ int player::move()
 		if(oper_char == 'k') {
 			place_number = field_map[xplace-1][yplace],		//上キー
 			place_number_stop = field_map[xplace][yplace];	//0対策
-			place_flag = 0;									//指定されたキーが入力されたら終了するための印=0。
+			place_flag = 0;									//指定されたキーが入力されたら終了。
 		}else if(oper_char == 'j'){
 			place_number = field_map[xplace+1][yplace],		//下キー
 			place_number_stop = field_map[xplace][yplace];
@@ -86,6 +86,7 @@ int player::move()
 			yplace = yplace + 1;
 		}else{
 			std::cout<<"何もしません。\n";
+			//ここが表示されることがないよう祈る。
 		}
 	}
 	std::cout << "xplace=" << xplace << ",yplace=" << yplace << ",place=" << place_number << '\n';
