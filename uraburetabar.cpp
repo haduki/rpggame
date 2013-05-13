@@ -40,12 +40,10 @@ int uraburetabar(){
 		}else{
 			//例外処理
 			std::cout << "聞こえんな。もう一度言ってくれ。\n";
-//			continue;
 		}
 		std::cout << "まいどあり！\n";
 	}else{
 		std::cout << "聞こえんな。もう一度言ってくれ。\n";
-//		continue;
 	}
 
 //while end
