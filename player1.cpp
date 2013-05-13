@@ -49,7 +49,7 @@ int player::move()
 		}else{
 		//hjkl以外の方向が示された場合に、方向を聞き直す処理。
 			place_number_stop = field_map[xplace][yplace];
-	    	std::cin.clear();
+			std::cin.clear();
 			std::cin.ignore(INT_MAX,'\n');
 
 			std::cout<<"どっちに進めばいいか分からないよ〜。k↑:j↓:h←:l→:";
