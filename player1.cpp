@@ -19,6 +19,7 @@ int player::move()
 {
 	char oper_char;
 	int place_number,place_number_stop;
+	int x,y;
 	
 	std::cout << "\nどこに行きますか？:";
 	std::cout << "k↑:j↓:h←:l→\n";
@@ -46,13 +47,12 @@ int player::move()
 		std::cout << "xplace=" << xplace << ",yplace=" <<yplace<< ",place=" <<place_number << '\n';
 		//map内の表示 0は正しく現在位置の表示ができないため、別処理になる。
 		std::cout << "map内の表示\n";
-		int i,j;
-		for(i = 0; i < XMAP; i++){
-			for(j = 0; j < YMAP; j++){
-				if(place_number_stop == field_map[i][j]){
+		for(x = 0; x < XMAP; x++){
+			for(y = 0; y < YMAP; y++){
+				if(place_number_stop == field_map[x][y]){
 					std::cout << "●" << ',';
 				}else{
-					std::cout << field_map[i][j] << ',';
+					std::cout << field_map[x][y] << ',';
 				}
 			}
 			std::cout << '\n';
@@ -80,13 +80,12 @@ int player::move()
 	std::cout << "xplace=" << xplace << ",yplace=" << yplace << ",place=" << place_number << '\n';
 	//map表示
 	std::cout << "map内の表示\n";
-	int i,j;
-	for(i = 0; i < XMAP; i++){
-		for(j=0; j < YMAP; j++){
-			if(place_number == field_map[i][j]){
+	for(x = 0; x < XMAP; x++){
+		for(y = 0; y < YMAP; y++){
+			if(place_number == field_map[x][y]){
 				std::cout << "●" << ',';
 			}else{
-				std::cout << field_map[i][j] << ',';
+				std::cout << field_map[x][y] << ',';
 			}
 		}
 		std::cout<<'\n';
