@@ -1,3 +1,4 @@
+#include<limits>
 #include"gameConfig.h"
 #include"player1.h"
 
@@ -18,29 +19,39 @@ player::player(int xcoordinate,int ycoordinate)
 int player::move()
 {
 	char oper_char;
-	int place_number,place_number_stop;
+	int place_number,place_number_stop,place_flag = 1;
 	int x,y;
 	
 	std::cout << "\nどこに行きますか？:";
 	std::cout << "k↑:j↓:h←:l→\n";
 	std::cin >> oper_char;
-	
+
 	//event check 0をあぶり出せ！！
-	if(oper_char == 'k') {
-		place_number = field_map[xplace-1][yplace],		//上キー
-		place_number_stop = field_map[xplace][yplace];	//0対策
-	}else if(oper_char == 'j'){
-		place_number = field_map[xplace+1][yplace],		//下キー
-		place_number_stop = field_map[xplace][yplace];
-	}else if(oper_char == 'h'){
-		place_number = field_map[xplace][yplace-1],		//左キー
-		place_number_stop = field_map[xplace][yplace];
-	}else if(oper_char == 'l'){
-		place_number = field_map[xplace][yplace+1],		//右キー
-		place_number_stop = field_map[xplace][yplace];
-	}else{
-		std::cout<<"方向を決めてください。\n";
-		place_number = 0;
+	while(place_flag == 1){
+		if(oper_char == 'k') {
+			place_number = field_map[xplace-1][yplace],		//上キー
+			place_number_stop = field_map[xplace][yplace];	//0対策
+			place_flag = 0;									//指定されたキーが入力されたら終了するための印=0。
+		}else if(oper_char == 'j'){
+			place_number = field_map[xplace+1][yplace],		//下キー
+			place_number_stop = field_map[xplace][yplace];
+			place_flag = 0;
+		}else if(oper_char == 'h'){
+			place_number = field_map[xplace][yplace-1],		//左キー
+			place_number_stop = field_map[xplace][yplace];
+			place_flag = 0;
+		}else if(oper_char == 'l'){
+			place_number = field_map[xplace][yplace+1],		//右キー
+			place_number_stop = field_map[xplace][yplace];
+			place_flag = 0;
+		}else{
+			place_number_stop = field_map[xplace][yplace];
+	    	std::cin.clear();
+			std::cin.ignore(INT_MAX,'\n');
+
+			std::cout<<"どっちに進めばいいか分からないよ〜。k↑:j↓:h←:l→:";
+			std::cin >> oper_char;
+		}
 	}
 	//0:待機 else:進む
 	if(place_number == 0){
