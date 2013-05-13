@@ -1,7 +1,7 @@
 #RPGgame
 
 CXX = g++
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -g
 SRCS = mainGame.cpp player1.cpp event1.cpp uraburetabar.cpp
 OBJS = mainGame.o player1.o event1.o uraburetabar.o
 PROGRAM = rpggame

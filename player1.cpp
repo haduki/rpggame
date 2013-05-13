@@ -18,11 +18,13 @@ player::player(int xcoordinate,int ycoordinate)
  -----------------------------------------------------*/
 int player::move()
 {
-	char oper_char;
-	int place_number,place_number_stop,place_flag = 1;
+	char oper_char;			//主人公の進む方向
+	int place_number;		//主人公が進んだ位置とイベント情報
+	int place_number_stop;	//なんらかの原因で進めなかった場合の主人公の位置
+	int place_flag = 1;		//hjkl以外を入力された場合の対策用
 	int x,y;
 	
-	std::cout << "\nどこに行きますか？:";
+	std::cout << "\nどこに行く？:";
 	std::cout << "k↑:j↓:h←:l→\n";
 	std::cin >> oper_char;
 
@@ -45,6 +47,7 @@ int player::move()
 			place_number_stop = field_map[xplace][yplace];
 			place_flag = 0;
 		}else{
+		//hjkl以外の方向が示された場合に、方向を聞き直す処理。
 			place_number_stop = field_map[xplace][yplace];
 	    	std::cin.clear();
 			std::cin.ignore(INT_MAX,'\n');
@@ -55,7 +58,7 @@ int player::move()
 	}
 	//0:待機 else:進む
 	if(place_number == 0){
-		std::cout << "xplace=" << xplace << ",yplace=" <<yplace<< ",place=" <<place_number << '\n';
+		std::cout << "xplace=" << xplace << ",yplace=" << yplace << ",place=" << place_number << '\n';
 		//map内の表示 0は正しく現在位置の表示ができないため、別処理になる。
 		std::cout << "map内の表示\n";
 		for(x = 0; x < XMAP; x++){
