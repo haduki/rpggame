@@ -7,6 +7,12 @@ player::player(int xcoordinate,int ycoordinate)
 {
 	xplace = xcoordinate;
 	yplace = ycoordinate;
+
+}
+
+player::player(int money)
+{
+	cash = money;
 }
 
 /*----------------------------------------------------
@@ -110,7 +116,8 @@ int player::move()
 }
 
 //所持金を計算する関数
-int player::money()
+int player::money(int pay)
 {
-	return 0;
+	cash = cash - pay;	
+	return cash;
 }

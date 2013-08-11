@@ -13,9 +13,9 @@ class player
 		int HP;				//HP
 	public:
 		player(int xcoordinate,int ycoordinate);
+		player(int money);
 		int move();		//移動関数
-		int money();	//所持金を計算する関数
+		int money(int pay);	//所持金を計算する関数
 };
-
 
 #endif

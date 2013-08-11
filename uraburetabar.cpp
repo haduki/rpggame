@@ -1,12 +1,19 @@
 #include<iostream>
 #include<limits>
+#include"player1.h"
+#include"eventIndex.h"
+
 //うらぶれたバーに入りますか？の処理
 
 //バー内の処理
-int uraburetabar(){
+int uraburetabar()
+{
 	int whatans;
 	int menuans;
 	int mysteryflag = 0;
+	int tmp;
+	//コンストラクタを作んないとだめっぽい
+	player mani(1000);
 
 	std::cout << "いらっしゃい。\n";
 //while()
@@ -22,8 +29,8 @@ int uraburetabar(){
 	}else if(whatans == 1){
 		std::cout << "はいよ。\n";
 		std::cout << "メニュー\n";
-		std::cout << "1.バナナミルク:650G\n";
-		std::cout << "2.ロイヤルミルクティー:750G\n";
+		std::cout << "1.バナナミルク:" << BANANA << "G\n";
+		std::cout << "2.ロイヤルミルクティー:" << ROYAL << "G\n";
 		std::cout << "欲しい酒の番号を言ってくれ:";
 		for(std::cin >> menuans; !std::cin; std::cin >> menuans){
 			std::cout << "数字で選ぶのがこの店のルールだ。すまんがもう一回言ってくれ。\n";
@@ -32,8 +39,12 @@ int uraburetabar(){
 		}
 		if(menuans == 1){
 			//所持金が650円減る処理
+			tmp = mani.money(BANANA);
+			std::cout << "残金=" << tmp << "\n";
 		}else if(menuans == 2){
 			//所持金が750円減る処理
+			tmp = mani.money(ROYAL);
+			std::cout << "残金=" << tmp << "\n";
 		}else if(menuans == 3){
 			std::cout << "ん？何だ？\n";
 			mysteryflag = 1;
